@@ -4,7 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
-const cookieParser = require('cookie-parser');
 // const cors = require('cors');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -18,8 +17,6 @@ const auth = require('./middlewares/auth');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-
-app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -53,10 +50,6 @@ app.post('/signup', celebrate({
     avatar: Joi.string().pattern(/^http[s]?:\/\/[a-zA-Z0-9-._~:/?#[@!$&'()*+,;\]=]+\.[a-zA-Z0-9-._~:/?#[@!$&'()*+,;\]=]+$/),
   }),
 }), createUser);
-
-app.get('/signout', (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
-});
 
 app.use('*', auth, (req, res, next) => {
   next(new NotFoundError('Запрашиваемый ресурс не найден'));

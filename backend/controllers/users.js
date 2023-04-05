@@ -137,13 +137,6 @@ module.exports.login = (req, res, next) => {
             about: user.about,
             avatar: user.avatar,
           };
-          // res
-          //   .cookie('jwt', token, {
-          //     maxAge: 3600000 * 24 * 7,
-          //     httpOnly: true,
-          //   });
-          // res.send({ data });
-
           res.send({ token, data });
         });
     })
