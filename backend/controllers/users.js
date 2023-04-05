@@ -68,7 +68,6 @@ module.exports.createUser = (req, res, next) => {
         name: user.name,
         about: user.about,
         avatar: user.avatar,
-        _id: req.user._id,
       };
       res.send({ data });
     })
