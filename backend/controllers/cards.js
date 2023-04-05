@@ -26,7 +26,14 @@ module.exports.createCard = (req, res, next) => {
   const owner = req.user._id;
 
   Card.create({ name, link, owner })
-    .then((card) => res.send({ data: card }))
+    .then((card) => {
+      Card.findById(card._id)
+        .populate(['owner', 'likes'])
+        .then((result) => {
+          res.send({ data: result });
+        })
+        .catch((err) => sendError(err, next));
+    })
     .catch((err) => sendError(err, next));
 };
 
