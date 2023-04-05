@@ -1,0 +1,15 @@
+.sign-in__text {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  margin: 15px 0 0;
+  color: white;
+  text-align: center;
+  transition: opacity 1s ease;
+  cursor: pointer;
+}
+
+.sign-in__text:hover {
+  opacity: 0.6;
+}

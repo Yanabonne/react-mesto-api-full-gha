@@ -1,0 +1,13 @@
+@media screen and (max-width: 600px) {
+  .header__logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header__logos {
+    width: 100%;
+  }
+}

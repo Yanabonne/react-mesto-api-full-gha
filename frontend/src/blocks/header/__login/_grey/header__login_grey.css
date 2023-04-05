@@ -1,0 +1,11 @@
+.header__login_grey {
+    color: #A9A9A9;
+}
+
+@media screen and (max-width: 600px) {
+    .header__login_grey {
+      padding-right: 0;
+      color: white;
+    }
+  }
+  
