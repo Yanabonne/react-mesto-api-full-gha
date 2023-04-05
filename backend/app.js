@@ -19,7 +19,6 @@ const auth = require('./middlewares/auth');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(cors());
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -27,6 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
   useNewUrlParser: true,
 });
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
