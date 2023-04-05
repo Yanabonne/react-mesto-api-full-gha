@@ -95,7 +95,7 @@ function App() {
       .setCardLikeStatus(card._id, isLiked)
       .then((newCard) => {
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+          state.map((c) => (c._id === card._id ? newCard.data : c))
         );
       })
       .catch((err) => {
@@ -124,7 +124,8 @@ function App() {
     api
       .sendUserInfo(data)
       .then((res) => {
-        setCurrentUser(res);
+        console.log(res);
+        setCurrentUser(res.data);
         closeAllPopups();
       })
       .catch((err) => {
@@ -136,7 +137,7 @@ function App() {
     api
       .sendAvatarInfo(url)
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         closeAllPopups();
       })
       .catch((err) => {
@@ -151,7 +152,7 @@ function App() {
         link: data.link,
       })
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => {
@@ -201,6 +202,7 @@ function App() {
           localStorage.setItem("token", res.token);
           setIsLoggedIn(true);
           setCurrentUserEmail(email);
+          setCurrentUser(res.data);
           linkToProfile();
         }
       })
@@ -237,7 +239,8 @@ function App() {
       api
       .getInitialCards()
       .then((initialCards) => {
-        setCards(initialCards);
+        const cards = initialCards.data.reverse();
+        setCards(cards);
       })
       .catch((err) => console.log(err));
     }
@@ -248,7 +251,7 @@ function App() {
       api
       .getUserInfo()
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
       })
       .catch((err) => console.log(err));
     }

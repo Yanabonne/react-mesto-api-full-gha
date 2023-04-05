@@ -20,7 +20,7 @@ function Card({ onCardClick, card, onCardLike, onCardDelete }) {
   function handleDeleteClick() {
     onCardDelete(card);
   }
-
+  
   return (
     <article className="photo-grid__item">
       {isOwn && (

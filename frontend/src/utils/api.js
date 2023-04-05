@@ -19,20 +19,32 @@ class Api {
   }
 
   getUserInfo() {
+    const token = localStorage.getItem('token');
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getResponseData(res));
   }
 
   getInitialCards() {
+    const token = localStorage.getItem('token');
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getResponseData(res));
   }
 
   sendUserInfo(data) {
+    const token = localStorage.getItem('token');
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       method: "PATCH",
       body: JSON.stringify({
         name: data.name,
@@ -42,37 +54,59 @@ class Api {
   }
 
   sendNewPostInfo(data) {
+    const token = localStorage.getItem('token');
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link,
+      }),
     }).then((res) => this._getResponseData(res));
   }
 
   deleteCard(cardId) {
+    const token = localStorage.getItem('token');
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       method: "DELETE",
     }).then((res) => this._getResponseData(res));
   }
 
   setCardLikeStatus(cardId, isAlreadyLiked) {
+    const token = localStorage.getItem('token');
     if (isAlreadyLiked) {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        headers: this._headers,
+        headers: {
+          authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
         method: "DELETE",
       }).then((res) => this._getResponseData(res));
     } else {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        headers: this._headers,
+        headers: {
+          authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
         method: "PUT",
       }).then((res) => this._getResponseData(res));
     }
   }
 
   sendAvatarInfo(url) {
+    const token = localStorage.getItem('token');
     return fetch(`${this._baseUrl}/users/me/avatar`, {
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       method: "PATCH",
       body: JSON.stringify({
         avatar: url,
@@ -82,11 +116,7 @@ class Api {
 };
 
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-54",
-  headers: {
-    authorization: "cd0a4e61-8d40-4238-b4eb-aa04c869218e",
-    "Content-Type": "application/json",
-  },
+  baseUrl: "http://localhost:3000",
 });
 
 export default api;

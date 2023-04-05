@@ -68,6 +68,7 @@ module.exports.createUser = (req, res, next) => {
         name: user.name,
         about: user.about,
         avatar: user.avatar,
+        _id: req.user._id,
       };
       res.send({ data });
     })
@@ -92,6 +93,7 @@ module.exports.updateUserInfo = (req, res, next) => {
         name: user.name,
         about: user.about,
         avatar: user.avatar,
+        _id: req.user._id,
       };
       res.send({ data });
     })
@@ -128,18 +130,21 @@ module.exports.login = (req, res, next) => {
             throw new IncorrectDataError('Неверные почта или пароль');
           }
           const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+
           const data = {
             email: user.email,
             name: user.name,
             about: user.about,
             avatar: user.avatar,
           };
-          res
-            .cookie('jwt', token, {
-              maxAge: 3600000 * 24 * 7,
-              httpOnly: true,
-            });
-          res.send({ data });
+          // res
+          //   .cookie('jwt', token, {
+          //     maxAge: 3600000 * 24 * 7,
+          //     httpOnly: true,
+          //   });
+          // res.send({ data });
+
+          res.send({ token, data });
         });
     })
     .catch((err) => sendError(err, next));
