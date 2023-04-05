@@ -1,4 +1,4 @@
-const BASE_URL = "http://api.yanabonne.nomoredomains.monster";
+const BASE_URL = "https://api.yanabonne.nomoredomains.monster";
 
 const getResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);

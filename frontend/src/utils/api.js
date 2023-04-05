@@ -116,7 +116,7 @@ class Api {
 };
 
 const api = new Api({
-  baseUrl: "http://api.yanabonne.nomoredomains.monster",
+  baseUrl: "https://api.yanabonne.nomoredomains.monster",
 });
 
 export default api;

@@ -4,7 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
-// const cors = require('cors');
+const cors = require('cors');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
@@ -24,7 +24,7 @@ mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-// app.use(cors({ origin: ['http://yanabonne.nomoredomains.monster'] }));
+app.use(cors({ origin: ['https://yanabonne.nomoredomains.monster'] }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
