@@ -27,7 +27,7 @@ mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.use(cors());
+app.use(cors({ origin: ['http://yanabonne.nomoredomains.monster'] }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
