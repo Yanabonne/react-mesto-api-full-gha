@@ -135,6 +135,7 @@ module.exports.login = (req, res, next) => {
             name: user.name,
             about: user.about,
             avatar: user.avatar,
+            _id: user._id,
           };
           res.send({ token, data });
         });
