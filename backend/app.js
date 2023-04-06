@@ -1,5 +1,4 @@
 require('dotenv').config();
-const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -17,8 +16,6 @@ const auth = require('./middlewares/auth');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
   useNewUrlParser: true,
