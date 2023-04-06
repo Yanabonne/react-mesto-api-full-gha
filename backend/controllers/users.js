@@ -7,7 +7,7 @@ const NotFoundError = require('../errors/not-found-err');
 const IncorrectDataError = require('../errors/incorrect-data-err');
 const DuplicationError = require('../errors/duplication-err');
 
-const JWT_SECRET = 'cdc42cb1da7509ed6100b46348a3444b52fa1e611d2888a33a629ea84b7bfde9';
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 function sendError(err, next) {
   if (err.name === 'ValidationError' || err.name === 'CastError') {
@@ -128,7 +128,7 @@ module.exports.login = (req, res, next) => {
           if (!matched) {
             throw new IncorrectDataError('Неверные почта или пароль');
           }
-          const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
 
           const data = {
             email: user.email,
