@@ -12,8 +12,6 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 function sendError(err, next) {
   if (err.name === 'ValidationError' || err.name === 'CastError') {
     next(new ValidationError('Переданы некорректные данные пользователя'));
-  } else if (err.name === 'NotFound') {
-    next(new NotFoundError('Пользователь не найден'));
   } else if (err.code === 11000) {
     next(new DuplicationError('Пользователь с такими данными уже существует'));
   } else {

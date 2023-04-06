@@ -7,8 +7,6 @@ const NoRightsError = require('../errors/no-rights-err');
 function sendError(err, next) {
   if (err.name === 'ValidationError' || err.name === 'CastError') {
     next(new ValidationError('Переданы некорректные данные карточки'));
-  } else if (err.name === 'NotFound') {
-    next(new NotFoundError('Карточка не найдена'));
   } else {
     next(err);
   }
