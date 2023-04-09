@@ -1,12 +1,29 @@
-[![Tests](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml/badge.svg)](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml)
-# react-mesto-api-full
-Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
-  
-Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
+<div align="center">
+  <img src="https://media.giphy.com/media/ERc1EaVfHOq4w/giphy.gif" width="150"/>
+</div>
 
-Адрес репозитория: https://github.com/Yanabonne/react-mesto-api-full-gha
+# Проект: Mesto бэкенд + фронтенд
 
-## Ссылки на проект
+**:link: О проекте**
+
+Приложение проекта `Mesto`, включающее в себя фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями.
+
+**:link: Технологии**
+
+[Фронтенд](https://github.com/Yanabonne/react-mesto-auth)
+
+[Бэкенд](https://github.com/Yanabonne/express-mesto-gha)
+
+**:link: Статус и планы по доработке**
+
+Проект закончен.
+
+**:link: Директории**
+
+`/frontend` — папка с файлами фронтенда  
+`/backend` — папка с файлами бэкенда   
+
+**:link: Ссылки на проект**
 
 IP 158.160.56.160
 
