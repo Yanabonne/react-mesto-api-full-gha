@@ -10,9 +10,9 @@
 
 **:link: Технологии**
 
-[Фронтенд](https://github.com/Yanabonne/react-mesto-auth)
+[Репозиторий фронтенда](https://github.com/Yanabonne/react-mesto-auth)
 
-[Бэкенд](https://github.com/Yanabonne/express-mesto-gha)
+[Репозиторий бэкенда](https://github.com/Yanabonne/express-mesto-gha)
 
 **:link: Статус и планы по доработке**
 
